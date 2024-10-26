@@ -2,6 +2,7 @@ function URLPicker( {
     areoi,
     isSelected,
     url,
+    urlTitle,
     setAttributes,
     opensInNewTab,
     onToggleOpenInNewTab,
@@ -45,12 +46,13 @@ function URLPicker( {
         >
             <areoi.editor.__experimentalLinkControl
                 className="wp-block-navigation-link__inline-link-input"
-                value={ { url, opensInNewTab } }
+                value={ { url, opensInNewTab, urlTitle } }
                 onChange={ ( {
                     url: newURL = '',
                     opensInNewTab: newOpensInNewTab,
+                    urlTitle: newTitle = ''
                 } ) => {
-                    setAttributes( { url: newURL } );
+                    setAttributes( { url: newURL, url_title: newTitle } );
 
                     if ( opensInNewTab !== newOpensInNewTab ) {
                         onToggleOpenInNewTab( newOpensInNewTab );
@@ -62,6 +64,17 @@ function URLPicker( {
                 } }
                 forceIsEditingLink={ isEditingURL }
             />
+            <div style={{
+                padding: '0 16px 16px 16px'
+            }}>
+                <areoi.components.TextControl
+                    label="Title"
+                    value={ urlTitle }
+                    onChange={ ( value ) => {
+                        setAttributes( { 'url_title': value } )
+                    } }
+                />
+            </div>
         </areoi.components.Popover>
     );
 

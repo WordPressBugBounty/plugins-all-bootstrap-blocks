@@ -17,6 +17,9 @@ function areoi_render_block_nav_and_tab_item( $attributes, $content )
 	if ( !empty( $attributes['url'] ) ) {
 		$nav_and_tab_item_open .= ' href="' . esc_url( $attributes['url'] ) . '"';
 	}
+	if ( !empty( $attributes['url_title'] ) ) {
+		$nav_and_tab_item_open .= ' title="' . esc_attr( $attributes['url_title'] ) . '"';
+	}
 	if ( !empty( $attributes['rel'] ) ) {
 		$nav_and_tab_item_open .= ' rel="' . esc_attr( $attributes['rel'] ) . '"';
 	}

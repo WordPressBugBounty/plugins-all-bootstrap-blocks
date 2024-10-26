@@ -85,6 +85,10 @@
 			"type": "string",
 			"default": null
 		},
+		"url_title": {
+	        "type": "string",
+	        "default": null
+	    },
 		"title": {
 			"type": "string",
 			"default": null

@@ -26,6 +26,9 @@ function areoi_render_block_content_with_media( $attributes, $content )
 		if ( !empty( $attributes['url'] ) ) {
 			$url .= ' href="' . esc_url( $attributes['url'] ) . '"';
 		}
+		if ( !empty( $attributes['url_title'] ) ) {
+			$url .= ' title="' . esc_attr( $attributes['url_title'] ) . '"';
+		}
 		if ( !empty( $attributes['rel'] ) ) {
 			$url .= ' rel="' . esc_attr( $attributes['rel'] ) . '"';
 		}

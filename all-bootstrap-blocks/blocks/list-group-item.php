@@ -16,10 +16,15 @@ function areoi_render_block_list_group_item( $attributes, $content )
 	);
 
 	if ( !empty( $attributes['url'] ) ) {
+		$title = '';
+		if ( !empty( $attributes['url_title'] ) ) {
+			$title = ' title="' . esc_attr( $attributes['url_title'] ) . '"';
+		}
 		$output = '
 			<a 
 				href="' . esc_url( $attributes['url'] ) . '" 
 				rel="' . (!empty( $attributes['rel'] ) ? esc_attr( $attributes['rel'] ) : '') . '" 
+				' . $title . '
 				target="' . (!empty( $attributes['linkTarget'] ) ? esc_attr( $attributes['linkTarget'] ) : '') . '" 
 				id="block-' . esc_attr( $attributes['block_id'] ) . '" 
 				class="' . $class . '"

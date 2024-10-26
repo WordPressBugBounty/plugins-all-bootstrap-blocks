@@ -70,6 +70,9 @@ function areoi_render_block_button( $attributes, $content )
 	if ( !empty( $attributes['url'] ) ) {
 		$button_open .= ' href="' . esc_url( $attributes['url'] ) . '"';
 	}
+	if ( !empty( $attributes['url_title'] ) ) {
+		$button_open .= ' title="' . esc_attr( $attributes['url_title'] ) . '"';
+	}
 	if ( !empty( $attributes['rel'] ) ) {
 		$button_open .= ' rel="' . esc_attr( $attributes['rel'] ) . '"';
 	}

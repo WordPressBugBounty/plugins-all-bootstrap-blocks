@@ -68,6 +68,7 @@ areoi.blocks.registerBlockType( meta, {
             rel,
             text,
             url,
+            url_title
         } = attributes;
         const onSetLinkRel = areoi.element.useCallback(
             ( value ) => {
@@ -221,6 +222,7 @@ areoi.blocks.registerBlockType( meta, {
                         <areoi.URLPicker
                             areoi={ areoi }
                             url={ url }
+                            urlTitle={ url_title }
                             setAttributes={ setAttributes }
                             isSelected={ isSelected }
                             opensInNewTab={ linkTarget === '_blank' }
