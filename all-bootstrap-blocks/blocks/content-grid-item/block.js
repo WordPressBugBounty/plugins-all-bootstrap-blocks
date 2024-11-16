@@ -163,7 +163,7 @@ areoi.blocks.registerBlockType( meta, {
                 { areoi.DisplayPreview( areoi, attributes, onChange, 'content-grid-item' ) }
 
                 { !attributes.preview &&
-                    <div { ...blockProps }>
+                    <div { ...blockProps } data-anchor={ attributes.anchor ? ' : #' + attributes.anchor : '' }>
                         <areoi.editor.InspectorControls key="setting">
 
                             { areoi.Background( areoi, attributes, onChange ) }

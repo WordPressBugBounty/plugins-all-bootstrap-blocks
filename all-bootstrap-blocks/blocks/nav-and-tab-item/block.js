@@ -90,7 +90,7 @@ areoi.blocks.registerBlockType( meta, {
         };
  
         return (
-            <div { ...blockProps }>
+            <div { ...blockProps } data-anchor={ attributes.anchor ? ' : #' + attributes.anchor : '' }>
                 { areoi.DisplayPreview( areoi, attributes, onChange, 'nav-and-tab-item' ) }
 
                 { !attributes.preview &&

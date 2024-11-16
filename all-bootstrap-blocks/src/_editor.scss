@@ -360,7 +360,7 @@ body,
         .wp-block-areoi-offcanvas-header,
         .wp-block-areoi-offcanvas-body,
         .wp-block-areoi-toast-header,
-        .wp-block-areoi-toast-body 
+        .wp-block-areoi-toast-body
      ),
     .is-selected .wp-block[class*="wp-block-areoi"]:not( 
         .wp-block-areoi-card-header, 
@@ -403,10 +403,11 @@ body,
         .wp-block-areoi-offcanvas-body,
         .wp-block-areoi-toast-header,
         .wp-block-areoi-toast-body
-    ) {
+    ),
+    .wp-block-areoi-div:hover {
 
         &:before {
-            content: attr( data-type );
+            content: attr( data-type ) attr( data-anchor );
             background-color: rgba( 0, 0, 0, 0.6 );
             padding: 0 5px;
             color: #fff;

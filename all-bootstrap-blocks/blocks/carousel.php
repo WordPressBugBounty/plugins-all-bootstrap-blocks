@@ -6,8 +6,17 @@ function areoi_render_block_carousel( $attributes, $content )
 
 	$dom 	= new DOMDocument;
 	$dom->encoding = 'utf-8';
-	// $dom->loadHTML( utf8_decode( $content ) );
-	$dom->loadHTML( mb_convert_encoding( $content, 'HTML-ENTITIES', 'UTF-8' ) );
+
+	if (version_compare(PHP_VERSION, '8.1.0', '>=')) {
+	    $map = array(
+	        0x80, 0x10FFFF, 0, 0xFFFF
+	    );
+	    $content = mb_encode_numericentity($content, $map, 'UTF-8');
+	} else {
+	    $content = mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8');
+	}
+
+	$dom->loadHTML( $content );
 	$xpath 	= new DOMXpath($dom);
 	$items 	= $xpath->query('//div[contains(@class, "carousel-item")]');
 

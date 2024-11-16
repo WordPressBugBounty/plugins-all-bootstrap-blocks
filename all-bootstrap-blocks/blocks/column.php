@@ -71,8 +71,10 @@ function areoi_render_block_column( $attributes, $content, $block )
 		$url .= '></a>';
 	}
 
+	$block_id = ( !empty( $attributes['block_id'] ) ? areoi_format_block_id( $attributes['block_id'] ) : '' );
+
 	$output = '
-		<div ' . areoi_return_id( $attributes ) . ' class="' . areoi_format_block_id( $attributes['block_id'] ) . ' ' . $class . '">
+		<div ' . areoi_return_id( $attributes ) . ' class="' . $block_id . ' ' . $class . '">
 			' . $background . '
 			' . $content . ' 
 			' . $url . '

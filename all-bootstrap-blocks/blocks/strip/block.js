@@ -66,7 +66,7 @@ areoi.blocks.registerBlockType( meta, {
                 { areoi.DisplayPreview( areoi, attributes, onChange, 'strip' ) }
 
                 { !attributes.preview &&
-                    <div { ...blockProps }>
+                    <div { ...blockProps } data-anchor={ attributes.anchor ? ' : #' + attributes.anchor : '' }>
                         <areoi.editor.BlockControls>
                             { areoi.Alignment( areoi, attributes, onChange ) }
                         </areoi.editor.BlockControls>

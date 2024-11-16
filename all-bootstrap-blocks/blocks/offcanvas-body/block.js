@@ -38,7 +38,7 @@ areoi.blocks.registerBlockType( meta, {
                 { areoi.DisplayPreview( areoi, attributes, onChange, 'offcanvas-body' ) }
 
                 { !attributes.preview &&
-                    <div { ...blockProps }>
+                    <div { ...blockProps } data-anchor={ attributes.anchor ? ' : #' + attributes.anchor : '' }>
                         <areoi.editor.InnerBlocks template={ BLOCKS_TEMPLATE } allowedBlocks={ ALLOWED_BLOCKS } />
                     </div>
                 }

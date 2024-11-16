@@ -53,7 +53,7 @@ areoi.blocks.registerBlockType( meta, {
                 { areoi.DisplayPreview( areoi, attributes, onChange, 'card' ) }
 
                 { !attributes.preview &&
-                    <div { ...blockProps }>
+                    <div { ...blockProps } data-anchor={ attributes.anchor ? ' : #' + attributes.anchor : '' }>
                         <areoi.editor.InspectorControls key="setting">
 
                             <areoi.components.PanelBody title={ 'Settings' } initialOpen={ false }>

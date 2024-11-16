@@ -47,11 +47,13 @@ function areoi_render_block_row( $attributes, $content )
 		areoi_get_display_class_str( $attributes, 'flex' ) 
 	);
 	}
+
+	$block_id = ( !empty( $attributes['block_id'] ) ? areoi_format_block_id( $attributes['block_id'] ) : '' );
 	
 	$background 	= include( AREOI__PLUGIN_DIR . '/blocks/_partials/background.php' );
 
 	$output = '
-		<div ' . areoi_return_id( $attributes ) . ' class="' . areoi_format_block_id( $attributes['block_id'] ) . ' ' . $class . '">
+		<div ' . areoi_return_id( $attributes ) . ' class="' . $block_id . ' ' . $class . '">
 			' . $background . '
 
 			' . $content . ' 
