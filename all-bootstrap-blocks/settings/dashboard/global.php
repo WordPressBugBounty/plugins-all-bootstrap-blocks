@@ -59,6 +59,17 @@ return array(
 		'options' => array()
 	),
 	array(
+		'label' => 'Force Exclude for Bootstrap Icon CSS',
+		'name' => $slug . 'bootstrap-exclude-icon-css',
+		'variable' => '',
+		'row' => 'default',
+		'input' => 'checkbox',
+		'default' => false,
+		'description' => 'By default the icon css will be included if there is a button or another block that uses icons on the page. Checking this box will remove the icon css completely.',
+		'allow_reset' => false,
+		'options' => array()
+	),
+	array(
 		'label' => 'Bootstrap CSS Priority',
 		'name' => $slug . 'bootstrap-css-priority',
 		'variable' => '',

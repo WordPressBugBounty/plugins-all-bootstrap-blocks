@@ -271,15 +271,19 @@ areoi.blocks.registerBlockType( meta, {
 
                                 <areoi.components.PanelBody title={ 'Additional' } initialOpen={ false }>
 
-                                    <areoi.components.PanelRow className={ 'areoi-panel-row' }>
-                                        <areoi.components.ToggleControl 
-                                            label={ 'Include Icon' }
-                                            help="Include a Bootstrap icon on your button"
-                                            checked={ attributes.include_icon }
-                                            onChange={ ( value ) => onChange( 'include_icon', value ) }
-                                        />
-                                    </areoi.components.PanelRow>
+                                    {
+                                        !areoi_vars.exclude_icons &&
 
+                                        <areoi.components.PanelRow className={ 'areoi-panel-row' }>
+                                            <areoi.components.ToggleControl 
+                                                label={ 'Include Icon' }
+                                                help="Include a Bootstrap icon on your button"
+                                                checked={ attributes.include_icon }
+                                                onChange={ ( value ) => onChange( 'include_icon', value ) }
+                                            />
+                                        </areoi.components.PanelRow>
+                                    }
+                                    
                                     <areoi.components.PanelRow className={ 'areoi-panel-row' }>
                                         <areoi.components.ToggleControl 
                                             label={ 'Include Badge' }
@@ -328,7 +332,7 @@ areoi.blocks.registerBlockType( meta, {
                                 </areoi.components.PanelBody>
 
                                 {
-                                    attributes.include_icon &&
+                                    !areoi_vars.exclude_icons && attributes.include_icon &&
                                     <areoi.components.PanelBody title={ 'Icon' } initialOpen={ false }>
 
                                         <areoi.components.PanelRow className="areoi-panel-row">

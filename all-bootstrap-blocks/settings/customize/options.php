@@ -21,6 +21,17 @@ return array(
 		'options' => array()
 	),
 	array(
+		'label' => '$enable-dark-mode',
+		'name' => $slug . 'enable-dark-mode',
+		'variable' => '$enable-dark-mode',
+		'row' => 'default',
+		'input' => 'checkbox',
+		'default' => '0',
+		'description' => 'Only available in 5.3+',
+		'allow_reset' => true,
+		'options' => array()
+	),
+	array(
 		'label' => '$enable-rounded',
 		'name' => $slug . 'enable-rounded',
 		'variable' => '$enable-rounded',

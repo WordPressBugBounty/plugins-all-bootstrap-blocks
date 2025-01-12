@@ -80,6 +80,7 @@ class AREOI_Styles
 			'btn_styles'	=> areoi2_get_btn_styles(),
 			'is_grid'		=> areoi2_get_option( 'areoi-customize-options-enable-cssgrid', false ),
 			'include_bootstrap_js' => areoi2_get_option( 'areoi-dashboard-global-bootstrap-js', 1 ),
+			'exclude_icons' => areoi2_get_option( 'areoi-dashboard-global-bootstrap-exclude-icon-css', false ),
 			'block_excludes' => array(
 				'strip' => areoi2_get_option( 'areoi-dashboard-global-hide-strip-block', false ),
 				'container' => areoi2_get_option( 'areoi-dashboard-global-hide-container-block', false ),
@@ -166,7 +167,7 @@ class AREOI_Styles
 		foreach ( $blocks as $block_key => $block ) {
 	    	if ( empty( $block['blockName'] ) ) continue;
 
-	    	if ( in_array( $block['blockName'], array( 'areoi/button', 'areoi/icon' ) ) ) {
+	    	if ( in_array( $block['blockName'], array( 'areoi/button', 'areoi/icon' ) ) && !areoi2_get_option( 'areoi-dashboard-global-bootstrap-exclude-icon-css', false ) ) {
 	    		$css_enqueues = array(
 		    		'areoi-bootstrap-icons' 	=> 'src/bootstrap-icons-1.11.3/bootstrap-icons.min.css',
 		    	);

@@ -129,17 +129,21 @@ jQuery(document).ready(function($){
 	});
 
 	$( document ).on( 'click', '.areoi-tabs .nav a', function( e ) {
-		e.preventDefault();
-		var container = $( this ).parents( '.areoi-tabs' );
-		var active_tab = container.find( $( this ).attr( 'href' ) );
-		
-		container.find( '.nav a' ).removeClass( 'active' );
-		$( this ).addClass( 'active' );
+		var href = $(this).attr('href');
+	    if (href && href.startsWith('#')) {
+	        e.preventDefault();
 
-		if ( active_tab ) {
-			container.find( '> div' ).addClass( 'd-none' );
-			active_tab.removeClass( 'd-none' );
-		}
+	        var container = $( this ).parents( '.areoi-tabs' );
+			var active_tab = container.find( $( this ).attr( 'href' ) );
+			
+			container.find( '.nav a' ).removeClass( 'active' );
+			$( this ).addClass( 'active' );
+
+			if ( active_tab ) {
+				container.find( '> div' ).addClass( 'd-none' );
+				active_tab.removeClass( 'd-none' );
+			}
+	    }
 	} );
 
 });

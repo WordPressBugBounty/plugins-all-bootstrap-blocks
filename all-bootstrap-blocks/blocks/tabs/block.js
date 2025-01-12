@@ -1,4 +1,6 @@
 import * as areoi from '../_components/Core.js';
+import { useSelect, useDispatch } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 import meta from './block.json';
 
 const ALLOWED_BLOCKS = [ 'areoi/div' ];
@@ -50,6 +52,50 @@ areoi.blocks.registerBlockType( meta, {
         if ( !block_id ) {
             setAttributes( { block_id: clientId } );
         }
+
+        const { insertBlock, updateBlockAttributes } = useDispatch('core/block-editor');
+        const blocks = useSelect((select) =>
+            select('core/block-editor').getBlocks(clientId)
+        );
+
+        useEffect(() => {
+            const navAndTabBlock = blocks.find(
+                (block) => block.name === 'areoi/nav-and-tab'
+            );
+
+            if (navAndTabBlock) {
+                const navItems = navAndTabBlock.innerBlocks;
+
+                navItems.forEach((navItem, index) => {
+                    // Check if the navItem has a URL
+                    if (!navItem.attributes.url) {
+                        const uniqueId = `tab-${Date.now()}-${index}`;
+                        const generatedUrl = `#${uniqueId}`;
+
+                        // Update the URL for the navItem
+                        updateBlockAttributes(navItem.clientId, { url: generatedUrl });
+
+                        // Check if a corresponding div exists
+                        const divExists = blocks.some(
+                            (block) =>
+                                block.name === 'areoi/div' &&
+                                block.attributes.anchor === uniqueId
+                        );
+
+                        // Add a new div block if it doesn't exist
+                        if (!divExists) {
+                            insertBlock(
+                                wp.blocks.createBlock('areoi/div', {
+                                    anchor: uniqueId,
+                                }),
+                                undefined,
+                                clientId
+                            );
+                        }
+                    }
+                });
+            }
+        }, [blocks]);
 
         const classes = [
             'tabs',
