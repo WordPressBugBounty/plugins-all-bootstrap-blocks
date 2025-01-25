@@ -4,7 +4,7 @@ Tags: Bootstrap, Bootstrap Blocks, Bootstrap 5
 Requires at least: 5
 Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 1.3.26
+Stable tag: 1.3.27
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,6 +111,10 @@ Bootstrap is included. However you have the ability to switch this off in your W
 [Please add any feature requests or bugs within the support section.](https://wordpress.org/support/plugin/all-bootstrap-blocks/)
 
 == Changelog ==
+
+= 1.3.27 =
+* FIX: https://wordpress.org/support/topic/why-do-container-blocks-require-rows-and-columns/
+* FIX: Vulnerability reported by @Nishiv to Wordfence
 
 = 1.3.26 =
 * FIX: https://wordpress.org/support/topic/feature-request-container-height-inside-div/

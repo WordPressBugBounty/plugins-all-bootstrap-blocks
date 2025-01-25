@@ -25,10 +25,16 @@ function areoi_render_block_accordion_item( $attributes, $content )
 		$always_open = 'data-bs-parent=".block-' . esc_attr( $attributes['parent_id'] ) . '"';
 	}
 
+	$heading = esc_attr( $attributes['heading'] );
+
+	if ( !in_array( $heading, ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] )) {
+		$heading = 'h3';
+	}
+
 	$output = '
 		<div ' . areoi_return_id( $attributes ) . ' class="' . areoi_format_block_id( $attributes['block_id'] ) . ' ' . $class . '">
 
-			<' . esc_attr( $attributes['heading'] ) . ' 
+			<' . $heading . ' 
 				class="accordion-header" 
 				id="block-' . esc_attr( $attributes['block_id'] ) . '-header"
 			>
@@ -42,7 +48,7 @@ function areoi_render_block_accordion_item( $attributes, $content )
 				>
 					' . wp_kses_post( $attributes['title'] ) . '
 				</button>
-			</' . esc_attr( $attributes['heading'] ) . '>
+			</' . $heading . '>
 
 			<div 
 				id="block-' . esc_attr( $attributes['block_id'] ) . '-collapse" 

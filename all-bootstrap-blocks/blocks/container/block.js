@@ -1,7 +1,7 @@
 import * as areoi from '../_components/Core.js';
 import meta from './block.json';
 
-const ALLOWED_BLOCKS = [ 'areoi/row' ];
+const ALLOWED_BLOCKS = [];
 
 const BLOCKS_TEMPLATE = [
     [ 'areoi/row', {}, [
@@ -96,7 +96,7 @@ areoi.blocks.registerBlockType( meta, {
 
                         { areoi.DisplayBackground( areoi, attributes ) }
 
-                        <areoi.editor.InnerBlocks template={ BLOCKS_TEMPLATE } allowedBlocks={ ALLOWED_BLOCKS } />
+                        <areoi.editor.InnerBlocks template={ BLOCKS_TEMPLATE } />
                     </div>
                 }
             </>
