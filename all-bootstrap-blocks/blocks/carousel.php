@@ -81,22 +81,30 @@ function areoi_render_block_carousel( $attributes, $content )
 	}
 
 	$auto_scroll = false;
-	if ( empty( $attributes['auto_scroll'] ) && $attributes['interval'] === true ) $auto_scroll = 'carousel'; 
-	if ( !empty( $attributes['auto_scroll'] ) ) $auto_scroll = ( $attributes['auto_scroll'] ? 'carousel' : 'false' ); 
+	if ( empty( $attributes['auto_scroll'] ) && $attributes['interval'] === true ) {
+	    $auto_scroll = 'carousel';
+	}
+	if ( !empty( $attributes['auto_scroll'] ) ) {
+	    $auto_scroll = ( $attributes['auto_scroll'] ? 'carousel' : false );
+	}
 
 	$interval = false;
-	if ( $attributes['interval'] ) $interval = esc_attr( $attributes['interval'] );
-	if ( $attributes['interval'] === true ) $interval = 4000;
-	if ( $auto_scroll != 'carousel' ) $interval = false;
+	if ( $auto_scroll === 'carousel' ) {
+	    if ( $attributes['interval'] === true ) {
+	        $interval = 4000;
+	    } elseif ( is_numeric( $attributes['interval'] ) ) {
+	        $interval = (int) $attributes['interval'];
+	    }
+	}
 
 	$output = '
 		<div 
 			' . areoi_return_id( $attributes ) . '
 			class="' . areoi_format_block_id( $attributes['block_id'] ) . ' ' . $class . '"
-			data-bs-ride="' . $auto_scroll . '"
+			' . ( $auto_scroll !== false ? 'data-bs-ride="' . esc_attr( $auto_scroll ) . '"' : '' ) . '
 			data-bs-touch="' .( $attributes['touch'] ? 'true' : 'false') . '"
 			data-bs-pause="' .( $attributes['pause'] ? esc_attr( $attributes['pause'] ) : 'hover') . '" 
-			' . ( $auto_scroll ? 'data-bs-interval="' . $interval . '"' : '' ) . '
+			' . ( $interval !== false ? 'data-bs-interval="' . esc_attr( $interval ) . '"' : '' ) . '
 		>
 			' . $buttons . '
 			' . $indicators . '
