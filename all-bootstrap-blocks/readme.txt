@@ -4,7 +4,7 @@ Tags: Bootstrap, Bootstrap Blocks, Bootstrap 5
 Requires at least: 5
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 1.3.29
+Stable tag: 1.3.30
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

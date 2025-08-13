@@ -493,10 +493,6 @@ class AREOI_Settings
 	public static function compile_scss()
 	{	
 		ini_set('max_execution_time', '300');
-
-		if ( !current_user_can( 'manage_options' ) ) {
-			return;
-		}
 		
 		$css_path 			= AREOI__PLUGIN_DIR . 'assets/css/';
 		if ( !file_exists( $css_path ) ) {

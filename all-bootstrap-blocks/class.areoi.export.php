@@ -43,8 +43,10 @@ class AREOI_Export
 
 	public static function import()
 	{
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( 'You are not allowed to do this.' );
+		if ( function_exists( 'current_user_can' ) ) {
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( 'You are not allowed to do this.' );
+			}
 		}
 
 		// Nonce check (dies on failure)
