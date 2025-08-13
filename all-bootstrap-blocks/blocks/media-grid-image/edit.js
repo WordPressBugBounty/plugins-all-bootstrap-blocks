@@ -373,9 +373,12 @@ export function ImageEdit( {
 	function onChange( key, value ) {
         setAttributes( { [key]: value } );
     }
+
+
     
 	return (
 		<>
+
             { areoi.DisplayPreview( areoi, attributes, onChange, 'media-grid-image' ) }
 
             { !attributes.preview &&
@@ -406,6 +409,7 @@ export function ImageEdit( {
 							/>
 						</BlockControls>
 					) }
+
 					<MediaPlaceholder
 						icon={ <BlockIcon icon={ icon } /> }
 						onSelect={ onSelectImage }
@@ -419,6 +423,7 @@ export function ImageEdit( {
 						mediaPreview={ mediaPreview }
 						disableMediaButtons={ temporaryURL || url }
 					/>
+
 				</figure>
 			}
 		</>

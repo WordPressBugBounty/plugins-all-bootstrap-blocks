@@ -489,18 +489,7 @@ export default function Image( {
 	);
 
 	return (
-		<ImageEditingProvider
-			id={ id }
-			url={ url }
-			naturalWidth={ naturalWidth }
-			naturalHeight={ naturalHeight }
-			clientWidth={ clientWidth }
-			onSaveImage={ ( imageAttributes ) =>
-				setAttributes( imageAttributes )
-			}
-			isEditing={ isEditingImage }
-			onFinishEditing={ () => setIsEditingImage( false ) }
-		>
+		<>
 			{ /* Hide controls during upload to avoid component remount,
 				which causes duplicated image upload. */ }
 			{ ! temporaryURL && controls }
@@ -521,6 +510,6 @@ export default function Image( {
 					}
 				/>
 			) }
-		</ImageEditingProvider>
+		</>
 	);
 }

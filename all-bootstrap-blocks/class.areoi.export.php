@@ -43,6 +43,13 @@ class AREOI_Export
 
 	public static function import()
 	{
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( 'You are not allowed to do this.' );
+		}
+
+		// Nonce check (dies on failure)
+		check_admin_referer( 'areoi_import', 'areoi_import_nonce' );
+
 		$options = json_decode( file_get_contents( $_FILES['areoi-import-file']['tmp_name'] ), true );
 
 		$status = 'error';

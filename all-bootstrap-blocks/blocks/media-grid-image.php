@@ -1,6 +1,8 @@
 <?php
 function areoi_render_block_media_grid_image( $attributes, $content ) 
 {
+	if ( empty( $attributes['parent_id'] ) ) $attributes['parent_id'] = 0;
+	if ( empty( $attributes['linkDestination'] ) ) $attributes['linkDestination'] = null;
 	
 	$parent 	= areoi_get_parent_block( $attributes['parent_id'] );
 	$layout 	= !empty( $parent['attrs']['layout'] ) ? esc_attr( $parent['attrs']['layout'] ) : 'grid';

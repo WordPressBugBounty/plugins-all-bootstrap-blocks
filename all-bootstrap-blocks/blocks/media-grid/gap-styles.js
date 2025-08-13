@@ -1,21 +1,20 @@
 /**
  * WordPress dependencies
  */
-import { BlockList } from '@wordpress/block-editor';
-import { useContext, createPortal } from '@wordpress/element';
+import { useStyleOverride } from '@wordpress/block-editor';
 
-export default function GapStyles( { blockGap, clientId } ) {
-	const styleElement = useContext( BlockList.__unstableElementContext );
+export default function GapStyles({ blockGap, clientId }) {
+	// Build the CSS scoped to this block instance
+	const css = `#block-${clientId} { --wp--style--unstable-gallery-gap: ${
+		blockGap ?? 'var(--wp--style--block-gap, 0.5em)'
+	} }`;
 
-	const gap = blockGap
-		? `#block-${ clientId } { --wp--style--unstable-gallery-gap: ${ blockGap } }`
-		: `#block-${ clientId } { --wp--style--unstable-gallery-gap: var( --wp--style--block-gap, 0.5em ) }`;
+	// Insert/update a <style> in the editor canvas (handles iframe, etc.)
+	useStyleOverride({
+		id: `gap-styles-${clientId}`, // stable id so it updates instead of duplicating
+		css,
+	});
 
-	const GapStyle = () => {
-		return <style>{ gap }</style>;
-	};
-
-	return gap && styleElement
-		? createPortal( <GapStyle />, styleElement )
-		: null;
+	// Nothing to render
+	return null;
 }

@@ -229,6 +229,7 @@ class AREOI_Settings
 
 						<form method="post" enctype="multipart/form-data">
 							<input type="hidden" name="areoi-import" value="1">
+							<?php wp_nonce_field( 'areoi_import', 'areoi_import_nonce' ); ?>
 							<p><input type="file" name="areoi-import-file"></p>
 							<button class="button button-primary">Import</button>
 						</form>
@@ -492,6 +493,10 @@ class AREOI_Settings
 	public static function compile_scss()
 	{	
 		ini_set('max_execution_time', '300');
+
+		if ( !current_user_can( 'manage_options' ) ) {
+			return;
+		}
 		
 		$css_path 			= AREOI__PLUGIN_DIR . 'assets/css/';
 		if ( !file_exists( $css_path ) ) {
