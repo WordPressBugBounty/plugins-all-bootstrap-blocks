@@ -4,7 +4,7 @@ Tags: Bootstrap, Bootstrap Blocks, Bootstrap 5
 Requires at least: 5
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 1.3.30
+Stable tag: 1.3.31
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,6 +111,9 @@ Bootstrap is included. However you have the ability to switch this off in your W
 [Please add any feature requests or bugs within the support section.](https://wordpress.org/support/plugin/all-bootstrap-blocks/)
 
 == Changelog ==
+
+= 1.3.31 =
+* https://wordpress.org/support/topic/block-editor-background-color-is-being-set-to-red/
 
 = 1.3.29 =
 * FIX: https://wordpress.org/support/topic/media-grid-dont-work/
